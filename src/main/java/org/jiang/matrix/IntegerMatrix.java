@@ -118,6 +118,7 @@ public class IntegerMatrix implements Matrix<Integer>{
 
     @Override
     public Matrix<Integer> multiply(Matrix<Integer> multMatrix) throws MatrixSizeException {
+        // TODO: multiplying matrices
         return null;
     }
 

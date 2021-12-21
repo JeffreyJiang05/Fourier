@@ -20,6 +20,11 @@ public class DoubleMatrix implements Matrix<Double> {
     }
 
     @Override
+    public Double get(int m, int n) {
+        return null;
+    }
+
+    @Override
     public Matrix<Double> transpose() {
         return null;
     }
