@@ -1,6 +1,8 @@
 package org.jiang.matrix;
 
-public class DoubleMatrix implements Matrix<Double> {
+import java.util.Iterator;
+
+public class DoubleMatrix implements Matrix<Double>, Iterable<DoubleVector> {
 
     public double[][] matrix;
 
@@ -46,6 +48,11 @@ public class DoubleMatrix implements Matrix<Double> {
 
     @Override
     public Matrix<Double> multiply(Matrix<Double> multMatrix) {
+        return null;
+    }
+
+    @Override
+    public Iterator<DoubleVector> iterator() {
         return null;
     }
 }

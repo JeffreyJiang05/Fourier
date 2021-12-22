@@ -1,11 +1,12 @@
 package org.jiang.matrix;
 
 import java.util.Arrays;
+import java.util.Iterator;
 
 /**
  * A matrix containing only of integer values.
  */
-public class IntegerMatrix implements Matrix<Integer>{
+public class IntegerMatrix implements Matrix<Integer>, Iterable<IntegerVector>{
 
     private final int[][] matrix;
 
@@ -118,6 +119,13 @@ public class IntegerMatrix implements Matrix<Integer>{
 
     @Override
     public Matrix<Integer> multiply(Matrix<Integer> multMatrix) throws MatrixSizeException {
+        if (getRows() != multMatrix.getCols()) {
+            throw new MatrixSizeException(String.format("Can not multiply matrix of size %dx%d with matrix of size %dx%d", multMatrix.getRows(), multMatrix.getCols(), getRows(), getCols()));
+        }
+        IntegerMatrix product = new IntegerMatrix(multMatrix.getRows(), getCols());
+
+
+
         // TODO: multiplying matrices
         return null;
     }
@@ -152,5 +160,10 @@ public class IntegerMatrix implements Matrix<Integer>{
         }
         str.deleteCharAt(str.length() - 1);
         return str.toString();
+    }
+
+    @Override
+    public Iterator<IntegerVector> iterator() {
+        return null;
     }
 }
