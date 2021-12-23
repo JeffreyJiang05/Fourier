@@ -2,6 +2,7 @@ package org.jiang.math.matrix;
 
 import java.util.Arrays;
 import java.util.Iterator;
+import java.util.Vector;
 
 /**
  * A matrix containing only of integer values.
@@ -70,6 +71,16 @@ public class IntegerMatrix implements Matrix<Integer>, Iterable<IntegerVector>{
         return matrix[m][n];
     }
 
+    /**
+     * A method that converts a row into a vector
+     *
+     * @param row row to convert to a vector
+     * @return A vector object of the row's values
+     */
+    public Matrix<Integer> getVector(int row) {
+        return new IntegerVector(matrix[row]);
+    }
+
     @Override
     public Matrix<Integer> transpose() {
         int[][] arr = new int[matrix[0].length][matrix.length];
@@ -122,12 +133,17 @@ public class IntegerMatrix implements Matrix<Integer>, Iterable<IntegerVector>{
         if (getRows() != multMatrix.getCols()) {
             throw new MatrixSizeException(String.format("Can not multiply matrix of size %dx%d with matrix of size %dx%d", multMatrix.getRows(), multMatrix.getCols(), getRows(), getCols()));
         }
-        IntegerMatrix product = new IntegerMatrix(multMatrix.getRows(), getCols());
+        int[][] product = new int[multMatrix.getRows()][getCols()];
 
+        for (int i = 0; i < product.length; i++) {
+            for (int j = 0; j < product[i].length; j++) {
+                for (int k = 0; k < getRows(); k++) {
+                    product[i][j] += multMatrix.get(i, k) * get(k, j);
+                }
+            }
+        }
 
-
-        // TODO: multiplying matrices
-        return null;
+        return new IntegerMatrix(product);
     }
 
     /**

@@ -5,24 +5,31 @@ package org.jiang.math.complex;
  */
 public class Complex {
 
-    public enum Mode {COORDINATE, POLAR}
+    /**
+     * An enum representing the modes of a Complex number argument
+     */
+    public enum Mode {
+        /**Arguments uses the standard coordinate system a + bi*/
+        COORDINATE,
+        /**Arguments uses the polar system with an argument and modulus*/
+        POLAR
+    }
 
     private double real;
     private double imaginary;
 
     /**
-     * TODO: POLAR
      * Constructs a complex number from either Polar values or coordinates
      *
      * @param val argument in radians or real part of a complex number
-     * @param val2 scalar or coefficient of the imaginary part of a complex number
+     * @param val2 modulus or coefficient of the imaginary part of a complex number
      * @param mode mode to construct values
      */
     public Complex(double val, double val2, Mode mode) {
         switch (mode) {
             case COORDINATE: {
-                this.real = real;
-                this.imaginary = imaginary;
+                this.real = val;
+                this.imaginary = val2;
                 break;
             }
             case POLAR: {
@@ -70,16 +77,26 @@ public class Complex {
         return new Complex(0, getImagCoefficient(), Mode.COORDINATE);
     }
 
+    /**
+     * Returns the modulus of the complex number
+     *
+     * @return The modulus of a complex number
+     */
     public double modulus() {
         return Math.sqrt(real * real + imaginary * imaginary);
     }
 
-    // TODO: Fix on the axis angles
+    /**
+     * Returns the argument of the complex number
+     *
+     * @return The argument of a complex number
+     */
     public double getArgument() {
         double arg = Math.atan(imaginary / real);
+
         return arg > 0
                 ? (imaginary < 0 ? Math.PI + arg : arg)
-                : (imaginary > 0 ? Math.PI + arg : 2 * Math.PI + arg);
+                : (arg == 0 ? real > 0 ? 0 : Math.PI : (imaginary > 0 ? Math.PI + arg : 2 * Math.PI + arg));
     }
 
     /**
@@ -91,34 +108,70 @@ public class Complex {
         return new Complex(imaginary, real, Mode.COORDINATE);
     }
 
+    /**
+     * Adds a complex number ot the instance.
+     *
+     * @param c complex number to add to the instance
+     * @return the instance after adding the complex number. For chaining.
+     */
     public Complex add(Complex c) {
         real += c.getReal();
         imaginary += c.getImagCoefficient();
         return this;
     }
 
+    /**
+     * Adds a real number to the complex number instance
+     *
+     * @param val real number to add to the complex number
+     * @return the instance after adding the real number. For chaining.
+     */
     public Complex add(double val) {
         real += val;
         return this;
     }
 
+    /**
+     * Subtracts a complex number from the instance
+     *
+     * @param c Complex number to subtract from the instance
+     * @return the instance after the difference. For chaining.
+     */
     public Complex subtract(Complex c) {
         real -= c.getReal();
         imaginary -= c.getImagCoefficient();
         return this;
     }
 
+    /**
+     * Subtracts a double from the instance
+     *
+     * @param val value to remove from the complex number
+     * @return the instance after the difference. For chaining.
+     */
     public Complex subtract(double val) {
         real -= val;
         return this;
     }
 
+    /**
+     * Multiplies the instance by a complex number
+     *
+     * @param c Complex number to multiply
+     * @return the product of the complex number. For chaining.
+     */
     public Complex multiply(Complex c) {
         real = getReal() * c.getReal() - getImagCoefficient() * c.getImagCoefficient();
         imaginary = getReal() * c.getImagCoefficient() + getImagCoefficient() * c.getReal();
         return this;
     }
 
+    /**
+     * Multiplies the instance by a value
+     *
+     * @param val value to multiply by
+     * @return the scaled complex number. For chaining
+     */
     public Complex multiply(double val) {
         real *= val;
         imaginary *= val;
