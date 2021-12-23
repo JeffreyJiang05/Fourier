@@ -5,18 +5,32 @@ package org.jiang.math.complex;
  */
 public class Complex {
 
+    public enum Mode {COORDINATE, POLAR}
+
     private double real;
     private double imaginary;
 
     /**
-     * Constructs a complex number
+     * TODO: POLAR
+     * Constructs a complex number from either Polar values or coordinates
      *
-     * @param real real part of the complex number
-     * @param imaginary coefficient of the imaginary number (i)
+     * @param val argument in radians or real part of a complex number
+     * @param val2 scalar or coefficient of the imaginary part of a complex number
+     * @param mode mode to construct values
      */
-    public Complex(double real, double imaginary) {
-        this.real = real;
-        this.imaginary = imaginary;
+    public Complex(double val, double val2, Mode mode) {
+        switch (mode) {
+            case COORDINATE: {
+                this.real = real;
+                this.imaginary = imaginary;
+                break;
+            }
+            case POLAR: {
+                this.real = Math.cos(val) * val2;
+                this.imaginary = Math.sin(val) * val2;
+                break;
+            }
+        }
     }
 
     /**
@@ -53,7 +67,19 @@ public class Complex {
      * @return the imaginary part of the complex number
      */
     public Complex getImaginary() {
-        return new Complex(0, getImagCoefficient());
+        return new Complex(0, getImagCoefficient(), Mode.COORDINATE);
+    }
+
+    public double modulus() {
+        return Math.sqrt(real * real + imaginary * imaginary);
+    }
+
+    // TODO: Fix on the axis angles
+    public double getArgument() {
+        double arg = Math.atan(imaginary / real);
+        return arg > 0
+                ? (imaginary < 0 ? Math.PI + arg : arg)
+                : (imaginary > 0 ? Math.PI + arg : 2 * Math.PI + arg);
     }
 
     /**
@@ -62,7 +88,7 @@ public class Complex {
      * @return the conjugate of the complex number
      */
     public Complex conjugate() {
-        return new Complex(imaginary, real);
+        return new Complex(imaginary, real, Mode.COORDINATE);
     }
 
     public Complex add(Complex c) {
