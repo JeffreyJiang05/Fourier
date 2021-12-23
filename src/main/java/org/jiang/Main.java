@@ -12,8 +12,10 @@ public class Main {
         // System.out.println(5 * Math.PI / 3);
         System.out.println(c.modulus());*/
 
-        IntegerMatrix matrix = new IntegerMatrix(new int[]{1, 2, 3});
+        /*IntegerMatrix matrix = new IntegerMatrix(new int[]{1, 2, 3});
         IntegerMatrix orig = new IntegerMatrix(new int[]{4}, new int[]{5}, new int[]{6});
-        System.out.println(matrix.multiply(orig));
+        System.out.println(matrix.multiply(orig));*/
+
+        System.out.println(Complex.exp(new Complex(1, Math.PI / 6, Complex.Mode.COORDINATE)));
     }
 }

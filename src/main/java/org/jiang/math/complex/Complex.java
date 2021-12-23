@@ -178,6 +178,12 @@ public class Complex {
         return this;
     }
 
+    /**
+     * Divides the instance by a complex number
+     *
+     * @param c divisor
+     * @return the quotient. For chaining
+     */
     public Complex divide(Complex c) {
         double sto = real;
         real = (getReal() * c.getReal() + getImagCoefficient() * c.getImagCoefficient())
@@ -187,8 +193,32 @@ public class Complex {
         return this;
     }
 
+    /**
+     * Divides the instance by a value
+     *
+     * @param val value to divide
+     * @return the quotient. For chaining
+     */
+    public Complex divide(double val) {
+        real /= val;
+        imaginary /= val;
+        return this;
+    }
+
     @Override
     public String toString() {
         return String.format("%f + %fi", real, imaginary);
+    }
+
+    /**
+     * Raises e to a complex power. Uses Euler's theorem that e^(θi) = cis θ = cos θ + sin θ * i
+     *
+     * @param c Complex power
+     * @return A new complex number from raising e to the complex power
+     */
+    public static Complex exp(Complex c) {
+        double expReal = Math.exp(c.getReal());
+        Complex expImag = new Complex(Math.cos(c.getImagCoefficient()), Math.sin(c.getImagCoefficient()), Mode.COORDINATE);
+        return expImag.add(expReal);
     }
 }
