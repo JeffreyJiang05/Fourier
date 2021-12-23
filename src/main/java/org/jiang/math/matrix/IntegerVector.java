@@ -1,4 +1,4 @@
-package org.jiang.matrix;
+package org.jiang.math.matrix;
 
 import java.util.Iterator;
 
@@ -117,5 +117,10 @@ public class IntegerVector implements Matrix<Integer>, Iterable<Integer>{
                 return get(i++);
             }
         };
+    }
+
+    @Override
+    public String toString() {
+        return super.toString();
     }
 }

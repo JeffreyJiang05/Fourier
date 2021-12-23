@@ -1,7 +1,8 @@
 package org.jiang;
 
-import org.jiang.matrix.IntegerMatrix;
-import org.jiang.matrix.IntegerVector;
+import org.jiang.math.complex.Complex;
+import org.jiang.math.matrix.IntegerMatrix;
+import org.jiang.math.matrix.IntegerVector;
 
 public class Main {
     public static void main(String[] args) {
@@ -15,5 +16,9 @@ public class Main {
             System.out.println(val);
         }
         System.out.println(vector.transpose());
+
+        Complex c = new Complex(6, 2);
+        System.out.println(c);
+        System.out.println(c.divide(new Complex(3, 1)));
     }
 }

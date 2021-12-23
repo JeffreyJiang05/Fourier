@@ -1,4 +1,4 @@
-package org.jiang.matrix;
+package org.jiang.math.matrix;
 
 import java.util.Arrays;
 import java.util.Iterator;
@@ -164,6 +164,19 @@ public class IntegerMatrix implements Matrix<Integer>, Iterable<IntegerVector>{
 
     @Override
     public Iterator<IntegerVector> iterator() {
-        return null;
+        return new Iterator<>() {
+
+            int i = 0;
+
+            @Override
+            public boolean hasNext() {
+                return i < getRows();
+            }
+
+            @Override
+            public IntegerVector next() {
+                return new IntegerVector(matrix[i++]);
+            }
+        };
     }
 }

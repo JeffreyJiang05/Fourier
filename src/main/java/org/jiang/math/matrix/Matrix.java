@@ -1,4 +1,4 @@
-package org.jiang.matrix;
+package org.jiang.math.matrix;
 
 /**
  * An interface representing a Matrix object containing number values

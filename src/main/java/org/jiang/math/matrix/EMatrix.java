@@ -1,4 +1,4 @@
-package org.jiang.matrix;
+package org.jiang.math.matrix;
 
 import java.util.Arrays;
 import java.util.Iterator;

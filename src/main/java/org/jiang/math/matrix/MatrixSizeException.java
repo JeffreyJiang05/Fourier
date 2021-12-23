@@ -1,4 +1,4 @@
-package org.jiang.matrix;
+package org.jiang.math.matrix;
 
 public class MatrixSizeException extends RuntimeException {
 
