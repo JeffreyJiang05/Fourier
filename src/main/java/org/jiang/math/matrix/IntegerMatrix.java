@@ -93,13 +93,29 @@ public class IntegerMatrix implements Matrix<Integer>, Iterable<IntegerVector>{
     }
 
     @Override
-    public Matrix<Integer> scale(double scalar) {
+    public Matrix<Integer> scale(Integer scalar) {
         for (int i = 0; i < getRows(); i++) {
             for (int j = 0; j < getCols(); j++) {
                 matrix[i][j] *= scalar;
             }
         }
         return this;
+    }
+
+    /**
+     * Scales the matrix by a double converting it into a DoubleMatrix
+     *
+     * @param scalar amount to scale the matrix
+     * @return A new DoubleMatrix
+     */
+    public Matrix<Double> scale(double scalar) {
+        double[][] result = new double[getRows()][getCols()];
+        for (int i = 0; i < getRows(); i++) {
+            for (int j = 0; j < getCols(); j++) {
+                result[i][j] = matrix[i][j] * scalar;
+            }
+        }
+        return new DoubleMatrix(result);
     }
 
     @Override
@@ -194,5 +210,20 @@ public class IntegerMatrix implements Matrix<Integer>, Iterable<IntegerVector>{
                 return new IntegerVector(matrix[i++]);
             }
         };
+    }
+
+    /**
+     * Converts the current object into a double matrix
+     *
+     * @return A double matrix copy
+     */
+    public DoubleMatrix toDoubleMatrix() {
+        double[][] copy = new double[getRows()][getCols()];
+        for (int i = 0; i < getRows(); i++) {
+            for (int j = 0; j < getCols(); j++) {
+                copy[i][j] = matrix[i][j];
+            }
+        }
+        return new DoubleMatrix(copy);
     }
 }

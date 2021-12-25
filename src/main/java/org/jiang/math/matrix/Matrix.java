@@ -50,7 +50,7 @@ public interface Matrix<T> {
      * @param scalar The value to scale the matrix by
      * @return The scaled matrix instance.
      */
-    Matrix<T> scale(double scalar);
+    Matrix<T> scale(T scalar);
 
     /**
      * Adds a given matrix to the instance matrix.
