@@ -1,0 +1,16 @@
+
+20:48:47.820 main                               Test            INFO   [discreteCosineTransform_RANGE] Executing a 10000 sized array took 3381 milliseconds.
+20:48:50.968 main                               Test            INFO   [discreteCosineTransform_RANDOM] Executing a 10000 sized array took 3141 milliseconds.
+20:48:56.349 main                               Test            INFO   [discreteSineTransform_RANGE] Executing a 10000 sized array took 5379 milliseconds.
+20:49:01.677 main                               Test            INFO   [discreteSineTransform_RANDOM] Executing a 10000 sized array took 5327 milliseconds.
+19:48:02.227 Thread-1                           Test            INFO   [discreteSineTransform random] Executing on a 32768 sized array took 84676 milliseconds.
+19:48:02.391 Thread-0                           Test            INFO   [discreteSineTransform range] Executing on a 32768 sized array took 84842 milliseconds.
+19:49:13.821 Thread-0                           Test            INFO   [discreteSineTransform range] Executing on a 10000 sized array took 6574 milliseconds.
+19:49:13.830 Thread-1                           Test            INFO   [discreteSineTransform random] Executing on a 10000 sized array took 6585 milliseconds.
+19:55:14.624 Thread-1                           Test            INFO   [discreteSineTransform double random] Executing on a 10000 sized array took 6868 milliseconds.
+19:55:14.674 Thread-0                           Test            INFO   [discreteSineTransform double range] Executing on a 10000 sized array took 6920 milliseconds.
+19:58:50.684 Thread-0                           Test            INFO   [discreteSineTransform double range] Executing on a 32768 sized array took 81025 milliseconds.
+19:58:50.689 Thread-1                           Test            INFO   [discreteSineTransform double random] Executing on a 32768 sized array took 81033 milliseconds.
+20:04:48.461 Thread-0                           Test            INFO   [discreteSineTransform complex range] Executing on a 32768 sized array took 286337 milliseconds.
+20:06:13.162 Thread-0                           Test            INFO   [discreteSineTransform complex range] Executing on a 10000 sized array took 26319 milliseconds.
+23:54:01.719 Thread-0                           Test            INFO   [discreteSineTransform complex range] Executing on a 10000 sized array took 26509 milliseconds.
